@@ -2,18 +2,18 @@ export const data = {
     bride: {
         L: {
             id: 1,
-            name: 'Lorem Ipsum',
-            child: 'Putra ke lorem',
-            father: 'Lorem',
-            mother: 'Ipsum',
+            name: 'Herdian Maulana ',
+            child: 'Putra ke 1',
+            father: 'Tatang Setiawan',
+            mother: 'Ayi Rosanah',
             image: './src/assets/images/cowo.JPG'
         },
         P: {
             id: 2,
-            name: 'Ipsum Lorem',
-            child: 'Putri ke lorem',
-            father: 'Lorem',
-            mother: 'Ipsum',
+            name: 'Huna Khoerotun Hisan',
+            child: 'Putri ke 2',
+            father: 'Nani Kurniani',
+            mother: 'H.Edi Sopyan',
             image: './src/assets/images/cewe.JPG'
         },
 
@@ -22,26 +22,26 @@ export const data = {
 
     time: {
         marriage: {
-            year: '2030',
-            month: 'November',
-            date: '14',
-            day: 'Kamis',
+            year: '2026',
+            month: 'Januari',
+            date: '04',
+            day: 'Minggu',
             hours: {
                 start: '08.00',
                 finish: 'Selesai'
             }
         },
         reception: {
-            year: '2024',
-            month: 'November',
-            date: '14',
-            day: 'Kamis',
+            year: '2026',
+            month: 'Januari',
+            date: '04',
+            day: 'Minggu',
             hours: {
                 start: '11.00',
                 finish: 'Selesai'
             }
         },
-        address: 'Kp. Lorem, RT 000/ RW 000, Desa.Lorem, Kec.Ipsum, Kab.Lorem, Lorem (1234)'
+        address: 'Kp.Pasir Malaka, RT 001/ RW 003, Desa.Neglasari, Kec.Cipongkor, Kab.Bandung Barat, Kode.Pos (40564)'
     },
 
     link: {
@@ -69,21 +69,33 @@ export const data = {
         {
             id: 5,
             image: './src/assets/images/5.png'
+        },
+        {
+            id: 6,
+            image: './src/assets/images/4.jpg'
+        },
+        {
+            id: 7,
+            image: './src/assets/images/4.jpg'
+        },
+        {
+            id: 8,
+            image: './src/assets/images/4.jpg'
         }
     ],
 
     bank: [
         {
             id: 1,
-            name: 'Lorem Ipsum',
+            name: 'Herdian Maulana',
             icon: './src/assets/images/bca.png',
-            rekening: '12345678'
+            rekening: '1393986852'
         },
         {
             id: 2,
-            name: 'Ipsum Lorem',
+            name: 'Huna Khoerotun Hisan',
             icon: './src/assets/images/bri.png',
-            rekening: '12345678'
+            rekening: '411601052934539'
         },
     ],
 
