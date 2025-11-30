@@ -6,18 +6,18 @@ export const data = {
             child: 'Putra ke 1',
             father: 'Tatang Setiawan',
             mother: 'Ayi Rosanah',
-            image: './src/assets/images/cowo.JPG'
+            image: './src/assets/images/cowo.jpeg'
         },
         P: {
             id: 2,
             name: 'Huna Khoerotun Hisan',
             child: 'Putri ke 2',
-            father: 'Nani Kurniani',
-            mother: 'H.Edi Sopyan',
-            image: './src/assets/images/cewe.JPG'
+            father: 'H.Edi Sopyan',
+            mother: 'Nani Kurniani',
+            image: './src/assets/images/cewe.jpeg'
         },
 
-        couple: './src/assets/images/Couple.JPG'
+        couple: './src/assets/images/Couple.jpeg'
     },
 
     time: {
@@ -27,7 +27,7 @@ export const data = {
             date: '04',
             day: 'Minggu',
             hours: {
-                start: '08.00',
+                start: '09.00',
                 finish: 'Selesai'
             }
         },
@@ -45,8 +45,8 @@ export const data = {
     },
 
     link: {
-        calendar: 'https://calendar.app.google/oSVLRMYC79GzuA4f9',
-        map: 'https://maps.app.goo.gl/q1Ask2Jgd4ekiiKBA',
+        calendar: 'https://calendar.google.com/calendar/u/0/r/day/2026/1/4?pli=1',
+        map: 'https://maps.app.goo.gl/qwB4Uzwr8K39jmsR9',
     },
 
     galeri: [
@@ -68,19 +68,19 @@ export const data = {
         },
         {
             id: 5,
-            image: './src/assets/images/5.png'
+            image: './src/assets/images/5.jpg'
         },
         {
             id: 6,
-            image: './src/assets/images/4.jpg'
+            image: './src/assets/images/6.jpg'
         },
         {
             id: 7,
-            image: './src/assets/images/4.jpg'
+            image: './src/assets/images/7.jpg'
         },
         {
             id: 8,
-            image: './src/assets/images/4.jpg'
+            image: './src/assets/images/Couple.jpeg'
         }
     ],
 
@@ -101,7 +101,7 @@ export const data = {
 
     audio: './src/assets/audio/wedding.mp3',
 
-    api: 'https://script.google.com/macros/s/AKfycbyydz6N4p2VWUG8zsXeURv6ap9RP8a4eC3x6N3x6qTDjMVr1cIBz9S0NsHw2rWvBOSXGg/exec',
+    api: 'https://script.google.com/macros/s/AKfycbySJcZFZ6s0XeQwdho-muu2B-XDvwdHvuUr-x8tU528mppyo6nlDtbjLDp1RAwrz9Um/exec',
 
     navbar: [
         {
