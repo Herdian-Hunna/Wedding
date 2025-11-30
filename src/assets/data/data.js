@@ -6,7 +6,7 @@ export const data = {
             child: 'Putra ke lorem',
             father: 'Lorem',
             mother: 'Ipsum',
-            image: './src/assets/images/cowo.png'
+            image: './src/assets/images/cowo.JPG'
         },
         P: {
             id: 2,
