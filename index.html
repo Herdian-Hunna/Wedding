@@ -29,17 +29,20 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://sandiperdiansah.github.io/wedding-invitation">
 
-    <!-- Fonts Google -->
+    <!-- Fonts Google - Optimized -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Naskh+Arabic:wght@400..700&family=Sacramento&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Sacramento&display=swap"
+          rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Sacramento&display=swap" rel="stylesheet"></noscript>
 
-    <!-- Box icon -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Box icon - Deferred -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' media="print" onload="this.media='all'">
+    <noscript><link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'></noscript>
 
-    <!-- Animate on scroll -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <!-- Animate on scroll - Lightweight -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"></noscript>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="public/favicon.ico" type="image/x-icon">
@@ -267,7 +270,7 @@
     </div>
 </footer>
 
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script src="src/main.js" type="module"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
+<script src="src/main.js" type="module" defer></script>
 </body>
 </html>

@@ -8,21 +8,32 @@ import {welcome} from "./js/welcome.js";
 import {shareButtons} from "./js/share.js";
 import {initConfetti} from "./js/confetti.js";
 
-// load content
+// Optimized loading for mobile
 document.addEventListener('DOMContentLoaded', () => {
-    AOS.init({
-        duration: 1000,
-        easing: 'ease-in-out',
-        once: true
-    });
+    const isMobile = window.innerWidth <= 768;
+    
+    // Lightweight AOS for mobile
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: isMobile ? 600 : 1000,
+            easing: 'ease-out',
+            once: true,
+            disable: isMobile ? false : false,
+            offset: isMobile ? 50 : 100
+        });
+    }
 
     welcome();
     navbar();
     home();
-    bride()
+    bride();
     time();
     galeri();
     wishas();
     shareButtons();
-    initConfetti();
+    
+    // Lazy load confetti only on desktop or after delay
+    if (!isMobile) {
+        setTimeout(() => initConfetti(), 2000);
+    }
 });

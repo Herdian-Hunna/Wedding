@@ -9,7 +9,7 @@ export const galeri = () => {
 
     const initializeGallery = () => {
         const initialImage = data.galeri[0];
-        figureElement.innerHTML = `<img src="${initialImage.image}" alt="galeri image" id="${initialImage.id}">`;
+        figureElement.innerHTML = `<img src="${initialImage.image}" alt="galeri image" id="${initialImage.id}" loading="eager">`;
 
         data.galeri.forEach((item, index) => {
             paginationElement.innerHTML += `<li data-id="${item.id}" ${index === 0 ? 'class="active"' : ''}></li>`;
@@ -22,7 +22,7 @@ export const galeri = () => {
         const selectedImage = data.galeri.find(item => item.id === id);
 
         if (selectedImage) {
-            figureElement.innerHTML = `<img src="${selectedImage.image}" alt="galeri image" id="${selectedImage.id}">`;
+            figureElement.innerHTML = `<img src="${selectedImage.image}" alt="galeri image" id="${selectedImage.id}" loading="lazy">`;
 
             paginationElement.querySelectorAll('li').forEach((li) => {
                 li.classList.toggle('active', parseInt(li.dataset.id) === id);
@@ -61,7 +61,7 @@ export const galeri = () => {
     });
 
     showAllButton.addEventListener('click', () => {
-        showAllBox.innerHTML = data.galeri.map(item => `<img src="${item.image}" alt="image galeri">`).join('');
+        showAllBox.innerHTML = data.galeri.map(item => `<img src="${item.image}" alt="image galeri" loading="lazy">`).join('');
         showAllContainer.classList.add('active');
     });
 

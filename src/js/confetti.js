@@ -1,6 +1,8 @@
 export const createConfetti = () => {
-    const confettiCount = 50;
-    const colors = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#43e97b'];
+    // Reduced particles for mobile performance
+    const isMobile = window.innerWidth <= 768;
+    const confettiCount = isMobile ? 20 : 30;
+    const colors = ['#667eea', '#764ba2', '#f093fb'];
     
     // Add confetti animation to global CSS if not exists
     if (!document.querySelector('#confetti-styles')) {

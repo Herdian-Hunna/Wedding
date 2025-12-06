@@ -38,6 +38,13 @@
     pointer-events: none;
 }
 
+/* Reduce animations on mobile */
+@media (max-width: 768px) {
+    .home::after {
+        display: none;
+    }
+}
+
 .home.active {
     transform: translateY(0);
 }
