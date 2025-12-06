@@ -12,14 +12,13 @@ import {initConfetti} from "./js/confetti.js";
 document.addEventListener('DOMContentLoaded', () => {
     const isMobile = window.innerWidth <= 768;
     
-    // Lightweight AOS for mobile
-    if (typeof AOS !== 'undefined') {
+    // Disable AOS completely on mobile for better performance
+    if (typeof AOS !== 'undefined' && !isMobile) {
         AOS.init({
-            duration: isMobile ? 600 : 1000,
+            duration: 1000,
             easing: 'ease-out',
             once: true,
-            disable: isMobile ? false : false,
-            offset: isMobile ? 50 : 100
+            offset: 100
         });
     }
 
@@ -32,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     wishas();
     shareButtons();
     
-    // Lazy load confetti only on desktop or after delay
+    // Lazy load confetti only on desktop
     if (!isMobile) {
-        setTimeout(() => initConfetti(), 2000);
+        setTimeout(() => initConfetti(), 3000);
     }
 });

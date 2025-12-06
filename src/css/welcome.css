@@ -21,6 +21,15 @@
     overflow: hidden;
 }
 
+/* Optimize background image loading on mobile */
+@media (max-width: 768px) {
+    .welcome {
+        background-size: cover;
+        background-position: center;
+        will-change: transform, opacity;
+    }
+}
+
 .welcome::before {
     content: '';
     position: absolute;
@@ -35,11 +44,17 @@
     pointer-events: none;
 }
 
-/* Disable heavy animations on mobile */
+/* Disable heavy animations and effects on mobile */
 @media (max-width: 768px) {
     .welcome::before {
         animation: none;
         opacity: 0.5;
+    }
+    
+    .welcome figure,
+    .welcome button {
+        backdrop-filter: none;
+        background: rgba(255, 255, 255, 0.95);
     }
 }
 

@@ -14,6 +14,34 @@
     overflow: hidden;
 }
 
+/* Optimize background and disable heavy effects on mobile */
+@media (max-width: 768px) {
+    .home {
+        background-size: cover;
+        background-position: center;
+        will-change: transform;
+    }
+    
+    .home::after {
+        display: none;
+    }
+    
+    .home figure::before {
+        backdrop-filter: none !important;
+        animation: none;
+    }
+    
+    .home .home-time div {
+        backdrop-filter: none !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+    }
+    
+    .home .share-buttons .share-btn {
+        backdrop-filter: none !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+    }
+}
+
 .home::before {
     content: '';
     position: absolute;

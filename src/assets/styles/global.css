@@ -70,6 +70,13 @@ body::before {
     z-index: -1;
 }
 
+/* Disable heavy background on mobile */
+@media (max-width: 768px) {
+    body::before {
+        display: none;
+    }
+}
+
 body.active {
     overflow-y: auto;
 }
