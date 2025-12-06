@@ -35,6 +35,8 @@
     .home .home-time div {
         min-width: 4rem;
         height: 4rem;
+        backdrop-filter: none;
+        background: rgba(255, 255, 255, 0.95);
     }
 
     .home .home-time div p {
@@ -45,8 +47,12 @@
         font-size: 0.6rem;
     }
 
-    .home svg {
-        bottom: -5rem;
+    .home::after {
+        display: none;
+    }
+
+    .home figure::before {
+        display: none;
     }
 
     .home .share-buttons {
@@ -59,10 +65,29 @@
         width: 2.5rem;
         height: 2.5rem;
         font-size: 1.1rem;
+        backdrop-filter: none;
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    .home svg {
+        bottom: -5rem;
     }
 
     .welcome {
         padding: 2rem 1rem;
+    }
+
+    .welcome::before {
+        animation: none;
+    }
+
+    .welcome::after {
+        display: none;
+    }
+
+    .welcome.active {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
     }
 
     .welcome h2 {
@@ -72,6 +97,7 @@
     .welcome figure img {
         width: 9rem;
         height: 9rem;
+        animation: none;
     }
 
     .welcome figure figcaption {

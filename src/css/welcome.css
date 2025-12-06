@@ -21,13 +21,6 @@
     overflow: hidden;
 }
 
-@media (max-width: 768px) {
-    .welcome.active {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
-    }
-}
-
 .welcome::before {
     content: '';
     position: absolute;
@@ -40,22 +33,6 @@
     background-size: 50px 50px;
     animation: shimmer 20s linear infinite;
     pointer-events: none;
-}
-
-/* Mobile optimizations */
-@media (max-width: 768px) {
-    .welcome::before {
-        animation: none;
-    }
-    
-    .welcome::after {
-        display: none;
-    }
-    
-    .welcome.active {
-        transform: translateY(0) !important;
-        opacity: 1 !important;
-    }
 }
 
 .welcome::after {
@@ -95,13 +72,6 @@
     animation: fadeInUp 1s ease-out;
     position: relative;
     z-index: 1;
-    margin-bottom: 0.5rem;
-}
-
-@media (max-width: 768px) {
-    .welcome h2 {
-        font-size: 1.8rem;
-    }
 }
 
 .welcome figure {
@@ -115,12 +85,6 @@
     animation: fadeInUp 1.2s ease-out 0.2s both;
 }
 
-@media (max-width: 768px) {
-    .welcome figure {
-        margin: 1rem 0;
-    }
-}
-
 .welcome figure img {
     width: 10rem;
     height: 10rem;
@@ -130,14 +94,6 @@
     border: 3px solid #fff;
     transition: var(--transition-medium);
     animation: pulse 3s ease-in-out infinite;
-}
-
-@media (max-width: 768px) {
-    .welcome figure img {
-        width: 9rem;
-        height: 9rem;
-        animation: none;
-    }
 }
 
 .welcome figure img:hover {
@@ -152,12 +108,6 @@
     margin-top: 0.5rem;
 }
 
-@media (max-width: 768px) {
-    .welcome figure figcaption {
-        font-size: 1.6rem;
-    }
-}
-
 .welcome p span {
     font-size: 2.2rem;
     margin: 1rem 0;
@@ -170,22 +120,6 @@
     text-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
     letter-spacing: 2px;
     animation: fadeInUp 1.3s ease-out 0.3s both;
-}
-
-@media (max-width: 768px) {
-    .welcome p {
-        font-size: 0.85rem;
-        margin: 0.8rem 0;
-        line-height: 1.6;
-        padding: 0 1.5rem;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    }
-    
-    .welcome p span {
-        font-size: 1.8rem;
-        margin: 0.5rem 0;
-        letter-spacing: 1.5px;
-    }
 }
 
 .welcome button {
@@ -208,13 +142,6 @@
     overflow: hidden;
     animation: fadeInUp 1.4s ease-out 0.4s both;
     box-shadow: var(--shadow-md);
-}
-
-@media (max-width: 768px) {
-    .welcome button {
-        padding: 0.8rem 1.8rem;
-        font-size: 0.95rem;
-    }
 }
 
 .welcome button::before {

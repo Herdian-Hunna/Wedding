@@ -14,21 +14,6 @@
     overflow: hidden;
 }
 
-@media (max-width: 768px) {
-    .home.active {
-        transform: translateY(0) !important;
-        opacity: 1 !important;
-    }
-    
-    .home::after {
-        display: none;
-    }
-    
-    .home figure::before {
-        display: none;
-    }
-}
-
 .home::before {
     content: '';
     position: absolute;
@@ -53,25 +38,8 @@
     pointer-events: none;
 }
 
-/* Reduce animations on mobile */
-@media (max-width: 768px) {
-    .home::after {
-        display: none;
-    }
-}
-
 .home.active {
     transform: translateY(0);
-}
-
-/* Mobile fallback - always show home when active */
-@media (max-width: 768px) {
-    .home.active {
-        transform: translateY(0) !important;
-        opacity: 1 !important;
-        display: flex !important;
-        visibility: visible !important;
-    }
 }
 
 .home h2 {
