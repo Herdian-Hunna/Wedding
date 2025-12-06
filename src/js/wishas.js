@@ -11,9 +11,11 @@ import {comentarService} from "../services/comentarService.js";
 
 export const wishas = () => {
     const wishasContainer = document.querySelector('.wishas');
-    const [_, form] = wishasContainer.children[1].children;
-    const [peopleComentar, ___, containerComentar] = wishasContainer.children[2].children;
-    const buttonForm = form.children[6];
+    const form = wishasContainer.querySelector('#commentForm');
+    const buttonForm = form ? form.querySelector('button[type="submit"]') : null;
+    const containerComentar = wishasContainer.querySelector('ul[aria-label="list comentar"]');
+    const commentSection = wishasContainer.querySelector('div[data-aos="zoom-in"]');
+    const peopleComentar = commentSection ? commentSection.querySelector('p') : null;
     const pageNumber = wishasContainer.querySelector('.page-number');
     const prevButton = wishasContainer.querySelector('#prevBtn');
     const nextButton = wishasContainer.querySelector('#nextBtn');
@@ -47,9 +49,15 @@ export const wishas = () => {
     let lengthComentar;
 
     const initialComentar = async () => {
-        containerComentar.innerHTML = `<h1 style="font-size: 1rem; margin: auto">Loading...</h1>`;
-        peopleComentar.textContent = '...';
-        pageNumber.textContent = '..';
+        if (containerComentar) {
+            containerComentar.innerHTML = `<h1 style="font-size: 1rem; margin: auto">Loading...</h1>`;
+        }
+        if (peopleComentar) {
+            peopleComentar.textContent = '...';
+        }
+        if (pageNumber) {
+            pageNumber.textContent = '..';
+        }
 
         try {
             const response = await comentarService.getComentar();
@@ -58,48 +66,82 @@ export const wishas = () => {
             lengthComentar = comentar.length;
             comentar.reverse();
 
-            if (comentar.length > 0) {
-                peopleComentar.textContent = `${comentar.length} Orang telah mengucapkan`;
-            } else {
-                peopleComentar.textContent = `Belum ada yang mengucapkan`;
+            if (peopleComentar) {
+                if (comentar.length > 0) {
+                    peopleComentar.textContent = `${comentar.length} Orang telah mengucapkan`;
+                } else {
+                    peopleComentar.textContent = `Belum ada yang mengucapkan`;
+                }
             }
 
-            pageNumber.textContent = '1';
-            renderElement(comentar.slice(startIndex, endIndex), containerComentar, listItemComentar);
+            if (pageNumber) {
+                pageNumber.textContent = '1';
+            }
+            if (containerComentar) {
+                renderElement(comentar.slice(startIndex, endIndex), containerComentar, listItemComentar);
+            }
         } catch (error) {
-            return `Error : ${error.message}`;
+            console.error('Error loading comments:', error);
+            if (containerComentar) {
+                containerComentar.innerHTML = `<h1 style="font-size: 1rem; margin: auto; color: red;">Error loading comments</h1>`;
+            }
         }
     };
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        buttonForm.textContent = 'Loading...';
+    if (form && buttonForm) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (buttonForm) {
+                buttonForm.textContent = 'Loading...';
+                buttonForm.disabled = true;
+            }
 
-        const comentar = {
-            id: generateRandomId(),
-            name: e.target.name.value,
-            status: e.target.status.value === 'y' ? 'Hadir' : 'Tidak Hadir',
-            message: e.target.message.value,
-            date: getCurrentDateTime(),
-            color: generateRandomColor(),
-        };
+            const nameValue = e.target.nama ? e.target.nama.value.trim() : '';
+            const statusValue = e.target.kehadiran ? e.target.kehadiran.value : '';
+            const messageValue = e.target.comment ? e.target.comment.value.trim() : '';
 
-        try {
-            const response = await comentarService.getComentar();
+            if (!nameValue || !statusValue || !messageValue) {
+                alert('Mohon lengkapi semua field!');
+                if (buttonForm) {
+                    buttonForm.textContent = 'Kirim';
+                    buttonForm.disabled = false;
+                }
+                return;
+            }
 
-            await comentarService.addComentar(comentar);
+            const comentar = {
+                id: generateRandomId(),
+                name: nameValue,
+                status: statusValue === 'hadir' ? 'Hadir' : 'Tidak Hadir',
+                message: messageValue,
+                date: getCurrentDateTime(),
+                color: generateRandomColor(),
+            };
 
-            lengthComentar = response.comentar.length;
+            try {
+                const response = await comentarService.getComentar();
+                await comentarService.addComentar(comentar);
 
-            peopleComentar.textContent = `${++response.comentar.length} Orang telah mengucapkan`;
-            containerComentar.insertAdjacentHTML('afterbegin', listItemComentar(comentar));
-        } catch (error) {
-            return `Error : ${error.message}`;
-        } finally {
-            buttonForm.textContent = 'Kirim';
-            form.reset();
-        }
-    });
+                lengthComentar = response.comentar.length;
+
+                if (peopleComentar) {
+                    peopleComentar.textContent = `${++response.comentar.length} Orang telah mengucapkan`;
+                }
+                containerComentar.insertAdjacentHTML('afterbegin', listItemComentar(comentar));
+            } catch (error) {
+                alert(`Error: ${error.message}`);
+                console.error('Error submitting comment:', error);
+            } finally {
+                if (buttonForm) {
+                    buttonForm.textContent = 'Kirim';
+                    buttonForm.disabled = false;
+                }
+                if (form) {
+                    form.reset();
+                }
+            }
+        });
+    }
 
     // click prev & next
     let currentPage = 1;
