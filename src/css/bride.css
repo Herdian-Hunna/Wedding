@@ -4,19 +4,33 @@
     text-align: center;
     padding: 10rem 8rem;
     position: relative;
+    background: linear-gradient(to bottom, var(--bg-color) 0%, rgba(255, 255, 255, 0.95) 100%);
 }
 
 .bride h2 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-family: var(--arabic);
     font-weight: 400;
+    background: var(--premium-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 15px rgba(212, 175, 55, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.2));
+    letter-spacing: 3px;
 }
 
 .bride h3 {
-    font-size: var(--fontSize-heading-base);
+    font-size: 3.2rem;
     font-family: var(--sacramento);
     font-weight: 400;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
+    background: var(--premium-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
 }
 
 .bride .bride_couple,
@@ -38,33 +52,86 @@
     gap: 1rem;
 }
 
+.bride .bride_couple li figure {
+    position: relative;
+    transition: var(--transition-medium);
+}
+
+.bride .bride_couple li figure::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 14rem;
+    height: 14rem;
+    border-radius: 50%;
+    background: var(--bg-gradient);
+    opacity: 0.1;
+    z-index: -1;
+    transition: var(--transition-medium);
+}
+
+.bride .bride_couple li:hover figure::before {
+    opacity: 0.2;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
 .bride .bride_couple li figure img {
-    width: 12rem;
-    height: 12rem;
+    width: 13rem;
+    height: 13rem;
     object-fit: cover;
     border-radius: 50%;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-premium), 0 0 0 6px rgba(212, 175, 55, 0.2);
+    border: 5px solid rgba(212, 175, 55, 0.5);
+    transition: var(--transition-medium);
+    position: relative;
+}
+
+.bride .bride_couple li:hover figure img {
+    transform: scale(1.08);
+    box-shadow: var(--shadow-gold-lg), 0 0 0 10px rgba(212, 175, 55, 0.3), 0 0 0 14px rgba(244, 228, 188, 0.2);
+    border-color: var(--gold);
 }
 
 .bride .bride_couple li figure figcaption {
     font-size: var(--fontSize-heading-base);
     margin: 1rem 0;
     font-family: var(--sacramento);
+    color: #333;
+    font-weight: 500;
+}
+
+.bride .bride_couple li figure figcaption + p {
+    margin-top: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 400;
 }
 
 .bride .bride_couple span {
-    font-size: 3.4rem;
+    font-size: 4rem;
     font-family: var(--sacramento);
     font-weight: 400;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    background: var(--premium-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    animation: pulse 2s ease-in-out infinite;
+    text-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+    filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.2));
+    letter-spacing: 3px;
 }
 
 .bride i, .hadist i, .time a + p + i, .galeri > i {
-    font-size: 3rem;
-    color: #908d8d;
+    font-size: 3.5rem;
+    color: rgba(212, 175, 55, 0.4);
     position: absolute;
     z-index: 10;
-    animation: upAndDown 3s infinite;
+    animation: upAndDown 3s infinite, float 6s ease-in-out infinite;
+    filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3));
 }
 
 .bride i:nth-of-type(1) {
@@ -96,21 +163,42 @@
     width: 100%;
     padding: 4rem 8rem;
     text-align: center;
-    background-color: var(--bg-color);
+    background: var(--bg-gradient-soft);
     position: relative;
 }
 
 .hadist h2 {
-    font-size: var(--fontSize-heading-base);
+    font-size: 3.2rem;
     font-family: var(--sacramento);
     font-weight: 400;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    background: var(--premium-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+}
+
+.hadist p {
+    font-size: 1.2rem;
+    line-height: 2.2rem;
+    color: #444;
+    max-width: 850px;
+    margin: 0 auto;
+    font-weight: 400;
 }
 
 .hadist p span {
     display: block;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     font-size: 1.1rem;
+    font-style: italic;
+    background: var(--premium-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
 }
 
 .hadist i {

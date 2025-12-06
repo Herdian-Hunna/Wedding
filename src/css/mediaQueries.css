@@ -7,6 +7,17 @@
         bottom: -5rem;
     }
 
+    .home .share-buttons {
+        gap: 0.8rem;
+        margin: 1rem auto;
+    }
+
+    .home .share-buttons .share-btn {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.1rem;
+    }
+
     .bride, .time{
         padding: 6rem 1.4rem 8rem;
     }

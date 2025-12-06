@@ -1,6 +1,19 @@
 :root {
     --primary-font-color: '#212529';
     --bg-color: #f8f9fa;
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --bg-gradient-soft: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    --bg-gradient-warm: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    --bg-gradient-elegant: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    
+    /* Premium Gold/Rose Gold Colors */
+    --gold: #d4af37;
+    --gold-light: #f4e4bc;
+    --gold-dark: #b8941f;
+    --rose-gold: #e8b4b8;
+    --rose-gold-light: #f5e1e3;
+    --premium-gradient: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #e8b4b8 100%);
+    --premium-gradient-subtle: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(244, 228, 188, 0.1) 50%, rgba(232, 180, 184, 0.1) 100%);
 
     --fontSize-heading-lg: 3rem;
     --fontSize-heading-base: 2.8rem;
@@ -10,8 +23,16 @@
     --arabic: 'Noto Naskh Arabic', serif;
 
     --shadow-md: 0 0 10px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.15);
+    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.2);
+    --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.4);
+    --shadow-gold: 0 0 30px rgba(212, 175, 55, 0.3);
+    --shadow-gold-lg: 0 10px 50px rgba(212, 175, 55, 0.2);
+    --shadow-premium: 0 20px 60px rgba(212, 175, 55, 0.15), 0 0 40px rgba(232, 180, 184, 0.1);
 
     --transition-small: all .3s ease;
+    --transition-medium: all .5s ease;
+    --transition-large: all .8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html {
@@ -31,6 +52,22 @@ body {
     font-family: 'Josefin Sans', sans-serif;
     color: var(--primary-font-color);
     overflow-y: hidden;
+    background: var(--bg-gradient-soft);
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
 }
 
 body.active {
@@ -46,22 +83,30 @@ p {
 }
 
 .audio button {
-    width: 2rem;
-    height: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 50%;
-    border: none;
-    background-color: #fff;
-    color: #000;
-    font-size: 1.2rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: var(--bg-gradient);
+    color: #fff;
+    font-size: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
     position: fixed;
-    right: 1rem;
-    bottom: 1rem;
+    right: 1.5rem;
+    bottom: 1.5rem;
     cursor: pointer;
     transform: translateX(200%);
-    transition: 1.5s transform ease;
+    transition: var(--transition-medium);
+    box-shadow: var(--shadow-lg);
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.audio button:hover {
+    transform: translateX(0) scale(1.1);
+    box-shadow: var(--shadow-glow);
 }
 
 .audio button.show {
@@ -70,6 +115,7 @@ p {
 
 .audio button.active {
     animation: rotate 3s linear infinite;
+    box-shadow: var(--shadow-glow);
 }
 
 
@@ -90,4 +136,65 @@ p {
     50% {
         transform: translateY(0.8rem);
     }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+    66% {
+        transform: translateY(10px) rotate(-2deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+/* Floating decorative elements */
+.floating-element {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.1;
+    animation: float 6s ease-in-out infinite;
+}
+
+.floating-element:nth-child(odd) {
+    animation-duration: 8s;
+    animation-delay: -2s;
+}
+
+.floating-element:nth-child(even) {
+    animation-duration: 10s;
+    animation-delay: -4s;
 }

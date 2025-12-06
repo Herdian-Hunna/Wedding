@@ -69,6 +69,10 @@
         <h2 id="welcome-title">The Wedding Of</h2>
         <figure></figure>
         <p></p>
+
+        <!-- AUTO NAMA TAMU -->
+        <p class="nama-tamu-box">Kepada Yth: <span id="nama-tamu">Tamu Undangan</span></p>
+
         <button type="button" aria-label="Buka Undangan">
             <i class="bx bxs-envelope-open"></i>
             <span>Buka Undangan</span>
@@ -79,11 +83,29 @@
         <h2 id="home-title">Undangan Pernikahan</h2>
         <figure></figure>
         <h3></h3>
+
+        <!-- AUTO NAMA TAMU (BISA DIPINDAH SESUAI DESAIN) -->
+        <p style="font-size:1.1rem;margin-top:10px;">Untuk: <span id="nama-tamu-2">Tamu Undangan</span></p>
+
         <div class="home-time"></div>
         <a href="" target="_blank" role="link" aria-label="Simpan ke kalender">
             <i class='bx bx-calendar-check' aria-hidden="true"></i>
             <span>Simpan ke kalender</span>
         </a>
+        <div class="share-buttons">
+            <button type="button" class="share-btn" data-platform="whatsapp" aria-label="Bagikan via WhatsApp">
+                <i class='bx bxl-whatsapp'></i>
+            </button>
+            <button type="button" class="share-btn" data-platform="facebook" aria-label="Bagikan via Facebook">
+                <i class='bx bxl-facebook'></i>
+            </button>
+            <button type="button" class="share-btn" data-platform="twitter" aria-label="Bagikan via Twitter">
+                <i class='bx bxl-twitter'></i>
+            </button>
+            <button type="button" class="share-btn" data-platform="copy" aria-label="Salin link">
+                <i class='bx bx-link'></i>
+            </button>
+        </div>
         <div class="scroll_down">
             <i class="bx bx-mouse bx-fade-down" aria-hidden="true"></i>
             <span>scroll down</span>
@@ -178,20 +200,14 @@
             <path fill="#f8f9fa" fill-opacity="1"
                   d="M0,0L48,32C96,64,192,128,288,138.7C384,149,480,107,576,106.7C672,107,768,149,864,144C960,139,1056,85,1152,69.3C1248,53,1344,75,1392,85.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
         </svg>
-        <div>
-            <h2 data-aos="zoom-in" data-aos-duration="1000">Love Gift</h2>
-            <p data-aos="zoom-in" data-aos-duration="1000">
-                Tanpa mengurangi rasa hormat, bagi anda yang ingin memberikan tanda kasih untuk kami, dapat melalui
-                :
-            </p>
-            <div></div>
-        </div>
-
         <div data-aos="zoom-in" data-aos-duration="1000">
             <h2>Ucapan & Doa</h2>
             <form>
                 <label for="name">Nama</label>
+
+                <!-- AUTO-FILL FORM -->
                 <input type="text" name="name" id="name" placeholder="masukan nama anda" autoComplete="off" required/>
+
                 <label for="status">Kehadiran</label>
                 <select name="status" id="status" required aria-required="true">
                     <option value="" disabled selected>konfirmasi kehadiran</option>
@@ -259,5 +275,26 @@
 
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script src="src/main.js" type="module"></script>
+
+<!-- 🔥 SCRIPT OTOMATIS NAMA TAMU -->
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const nama = urlParams.get('nama');
+
+    // Tampilkan nama di welcome
+    if (nama) {
+        const t1 = document.getElementById("nama-tamu");
+        const t2 = document.getElementById("nama-tamu-2");
+        if (t1) t1.textContent = nama;
+        if (t2) t2.textContent = nama;
+    }
+
+    // Isi otomatis form nama di Ucapan
+    const formInputNama = document.getElementById("name");
+    if (nama && formInputNama) {
+        formInputNama.value = nama;
+    }
+</script>
+
 </body>
 </html>

@@ -2,15 +2,22 @@
     width: 100%;
     min-height: 100vh;
     padding: 4rem 8rem;
-    background-color: var(--bg-color);
+    background: var(--bg-gradient-soft);
     position: relative;
     text-align: center;
 }
 
 .wishas div:nth-of-type(1) h2, .wishas div:nth-of-type(2) h2 {
-    font-size: var(--fontSize-heading-base);
+    font-size: 3.2rem;
     font-family: var(--sacramento);
     font-weight: 400;
+    background: var(--premium-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+    margin-bottom: 1.5rem;
 }
 
 .wishas div:nth-of-type(1) > div {
@@ -25,9 +32,18 @@
 .wishas div:nth-of-type(1) > div figure {
     width: 24rem;
     text-align: center;
-    border-radius: 15px;
-    padding: 1rem 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 -1px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    transition: var(--transition-medium);
+}
+
+.wishas div:nth-of-type(1) > div figure:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
 }
 
 .wishas div:nth-of-type(1) > div figure img {
@@ -43,24 +59,53 @@
 }
 
 .wishas div:nth-of-type(1) > div figure button {
-    padding: 0.4rem 1rem;
-    border: 1px solid #000;
-    background-color: #fff;
-    border-radius: 10px;
+    padding: 0.6rem 1.5rem;
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 25px;
     cursor: pointer;
-    transition: var(--transition-small);
+    transition: var(--transition-medium);
+    color: #667eea;
+    font-weight: 500;
+    margin-top: 0.5rem;
 }
 
 .wishas div:nth-of-type(1) > div figure button:hover {
-    background-color: #000;
+    background: var(--bg-gradient);
     color: #fff;
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 .wishas div:nth-of-type(2){
-    margin-top: 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 -1px 1px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    padding: 2rem 4rem 4rem;
+    margin-top: 3rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(244, 228, 188, 0.1) 100%);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-premium);
+    border-radius: 30px;
+    padding: 3rem 4rem 4rem;
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    transition: var(--transition-medium);
+    position: relative;
+    overflow: hidden;
+}
+
+.wishas div:nth-of-type(2)::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+    animation: shimmer 8s linear infinite;
+}
+
+.wishas div:nth-of-type(2):hover {
+    box-shadow: var(--shadow-gold-lg);
+    border-color: rgba(212, 175, 55, 0.4);
+    transform: translateY(-3px);
 }
 
 .wishas div:nth-of-type(2) > form {
@@ -82,31 +127,92 @@
 .wishas div:nth-of-type(2) > form select,
 .wishas div:nth-of-type(2) > form textarea {
     width: 100%;
-    padding: 0.6rem 1rem;
-    border-radius: 5px;
-    border: 1px solid #000;
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+    transition: var(--transition-small);
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.wishas div:nth-of-type(2) > form input:focus,
+.wishas div:nth-of-type(2) > form select:focus,
+.wishas div:nth-of-type(2) > form textarea:focus {
+    outline: none;
+    border-color: rgba(102, 126, 234, 0.6);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
 .wishas div:nth-of-type(2) > form textarea {
     min-height: 6rem;
+    resize: vertical;
 }
 
 .wishas div:nth-of-type(2) > form button {
     width: 100%;
     color: #fff;
-    background-color: #000;
-    padding: 0.6rem 0;
-    border-radius: 5px;
-    margin-top: 1rem;
-    border: none;
+    background: var(--premium-gradient);
+    padding: 1rem 0;
+    border-radius: 50px;
+    margin-top: 2rem;
+    border: 2px solid rgba(212, 175, 55, 0.3);
     cursor: pointer;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: var(--transition-medium);
+    box-shadow: var(--shadow-gold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.wishas div:nth-of-type(2) > form button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: var(--transition-medium);
+}
+
+.wishas div:nth-of-type(2) > form button:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-gold-lg);
+    border-color: rgba(212, 175, 55, 0.6);
+}
+
+.wishas div:nth-of-type(2) > form button:hover::before {
+    left: 100%;
+}
+
+.wishas div:nth-of-type(2) > form button:active {
+    transform: translateY(-1px);
 }
 
 .wishas div:nth-of-type(3) {
-    margin-top: 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 -1px 1px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    padding: 2rem 4rem;
+    margin-top: 3rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(244, 228, 188, 0.1) 100%);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-premium);
+    border-radius: 30px;
+    padding: 2.5rem 4rem;
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.wishas div:nth-of-type(3)::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+    animation: shimmer 8s linear infinite;
 }
 
 .wishas div:nth-of-type(3) ul {
@@ -165,34 +271,48 @@
 }
 
 .wishas div:nth-of-type(3) .button-grup {
-    margin: 1rem auto 0;
-    border: 1px solid #000;
-    border-radius: 4px;
-    background-color: #fff;
+    margin: 1.5rem auto 0;
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(244, 228, 188, 0.2) 100%);
     width: fit-content;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    box-shadow: var(--shadow-gold);
+    backdrop-filter: blur(10px);
 }
 
 .wishas div:nth-of-type(3) .button-grup > span {
-    background-color: #d5d2d2;
-    width: 2rem;
-    height: 2rem;
+    background: var(--premium-gradient);
+    color: #fff;
+    width: 3rem;
+    height: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
 }
 
 .wishas div:nth-of-type(3) .button-grup  button {
-    padding: 0.5rem 1rem;
+    padding: 0.7rem 1.4rem;
     border: none;
-    background:none;
+    background: transparent;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.4rem;
+    color: var(--gold-dark);
+    transition: var(--transition-small);
+    font-weight: 600;
+}
+
+.wishas div:nth-of-type(3) .button-grup  button:hover {
+    background: var(--premium-gradient-subtle);
+    color: var(--gold);
 }
 
 .wishas svg:nth-of-type(1){
