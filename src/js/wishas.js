@@ -11,7 +11,12 @@ import {comentarService} from "../services/comentarService.js";
 
 export const wishas = () => {
     const wishasContainer = document.querySelector('.wishas');
-    const form = wishasContainer.querySelector('#commentForm');
+    if (!wishasContainer) {
+        console.error('Wishas container not found!');
+        return;
+    }
+    
+    const form = document.querySelector('#commentForm');
     const buttonForm = form ? form.querySelector('button[type="submit"]') : null;
     const containerComentar = wishasContainer.querySelector('ul[aria-label="list comentar"]');
     const commentSection = wishasContainer.querySelector('div[data-aos="zoom-in"]');
@@ -19,7 +24,6 @@ export const wishas = () => {
     const pageNumber = wishasContainer.querySelector('.page-number');
     const prevButton = wishasContainer.querySelector('#prevBtn');
     const nextButton = wishasContainer.querySelector('#nextBtn');
-
 
     const listItemComentar = (data) => {
         const name = formattedName(data.name);
@@ -88,24 +92,27 @@ export const wishas = () => {
         }
     };
 
+    // Setup form submit
     if (form && buttonForm) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            if (buttonForm) {
-                buttonForm.textContent = 'Loading...';
-                buttonForm.disabled = true;
-            }
+            e.stopPropagation();
+            
+            buttonForm.textContent = 'Loading...';
+            buttonForm.disabled = true;
 
-            const nameValue = e.target.nama ? e.target.nama.value.trim() : '';
-            const statusValue = e.target.kehadiran ? e.target.kehadiran.value : '';
-            const messageValue = e.target.comment ? e.target.comment.value.trim() : '';
+            const nameInput = form.querySelector('[name="nama"]');
+            const statusInput = form.querySelector('[name="kehadiran"]');
+            const commentInput = form.querySelector('[name="comment"]');
+
+            const nameValue = nameInput ? nameInput.value.trim() : '';
+            const statusValue = statusInput ? statusInput.value : '';
+            const messageValue = commentInput ? commentInput.value.trim() : '';
 
             if (!nameValue || !statusValue || !messageValue) {
                 alert('Mohon lengkapi semua field!');
-                if (buttonForm) {
-                    buttonForm.textContent = 'Kirim';
-                    buttonForm.disabled = false;
-                }
+                buttonForm.textContent = 'Kirim';
+                buttonForm.disabled = false;
                 return;
             }
 
@@ -127,20 +134,20 @@ export const wishas = () => {
                 if (peopleComentar) {
                     peopleComentar.textContent = `${++response.comentar.length} Orang telah mengucapkan`;
                 }
-                containerComentar.insertAdjacentHTML('afterbegin', listItemComentar(comentar));
+                if (containerComentar) {
+                    containerComentar.insertAdjacentHTML('afterbegin', listItemComentar(comentar));
+                }
             } catch (error) {
                 alert(`Error: ${error.message}`);
                 console.error('Error submitting comment:', error);
             } finally {
-                if (buttonForm) {
-                    buttonForm.textContent = 'Kirim';
-                    buttonForm.disabled = false;
-                }
-                if (form) {
-                    form.reset();
-                }
+                buttonForm.textContent = 'Kirim';
+                buttonForm.disabled = false;
+                form.reset();
             }
         });
+    } else {
+        console.error('Form or button not found!', { form, buttonForm });
     }
 
     // click prev & next
@@ -150,10 +157,14 @@ export const wishas = () => {
     let endIndex = itemsPerPage;
 
     const updatePageContent = async () => {
-        containerComentar.innerHTML = '<h1 style="font-size: 1rem; margin: auto">Loading...</h1>';
-        pageNumber.textContent = '..';
-        prevButton.disabled = true;
-        nextButton.disabled = true;
+        if (containerComentar) {
+            containerComentar.innerHTML = '<h1 style="font-size: 1rem; margin: auto">Loading...</h1>';
+        }
+        if (pageNumber) {
+            pageNumber.textContent = '..';
+        }
+        if (prevButton) prevButton.disabled = true;
+        if (nextButton) nextButton.disabled = true;
 
         try {
             const response = await comentarService.getComentar();
@@ -161,33 +172,41 @@ export const wishas = () => {
 
             comentar.reverse();
 
-            renderElement(comentar.slice(startIndex, endIndex), containerComentar, listItemComentar);
-            pageNumber.textContent = currentPage.toString();
+            if (containerComentar) {
+                renderElement(comentar.slice(startIndex, endIndex), containerComentar, listItemComentar);
+            }
+            if (pageNumber) {
+                pageNumber.textContent = currentPage.toString();
+            }
         } catch (error) {
             console.log(error);
         } finally {
-            prevButton.disabled = false;
-            nextButton.disabled = false;
+            if (prevButton) prevButton.disabled = false;
+            if (nextButton) nextButton.disabled = false;
         }
     }
 
-    nextButton.addEventListener('click', async () => {
-        if (endIndex <= lengthComentar) {
-            currentPage++;
-            startIndex = (currentPage - 1) * itemsPerPage;
-            endIndex = startIndex + itemsPerPage;
-            await updatePageContent();
-        }
-    });
+    if (nextButton) {
+        nextButton.addEventListener('click', async () => {
+            if (endIndex <= lengthComentar) {
+                currentPage++;
+                startIndex = (currentPage - 1) * itemsPerPage;
+                endIndex = startIndex + itemsPerPage;
+                await updatePageContent();
+            }
+        });
+    }
 
-    prevButton.addEventListener('click', async () => {
-        if (currentPage > 1) {
-            currentPage--;
-            startIndex = (currentPage - 1) * itemsPerPage;
-            endIndex = startIndex + itemsPerPage;
-            await updatePageContent();
-        }
-    });
+    if (prevButton) {
+        prevButton.addEventListener('click', async () => {
+            if (currentPage > 1) {
+                currentPage--;
+                startIndex = (currentPage - 1) * itemsPerPage;
+                endIndex = startIndex + itemsPerPage;
+                await updatePageContent();
+            }
+        });
+    }
 
     initialComentar().then();
 };
