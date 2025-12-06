@@ -12,13 +12,15 @@ import {initConfetti} from "./js/confetti.js";
 document.addEventListener('DOMContentLoaded', () => {
     const isMobile = window.innerWidth <= 768;
     
-    // Disable AOS completely on mobile for better performance
-    if (typeof AOS !== 'undefined' && !isMobile) {
+    // Enable AOS on all devices but with lighter settings on mobile
+    if (typeof AOS !== 'undefined') {
         AOS.init({
-            duration: 1000,
+            duration: isMobile ? 400 : 1000,
             easing: 'ease-out',
             once: true,
-            offset: 100
+            offset: isMobile ? 20 : 100,
+            disable: false, // Always enable AOS
+            startEvent: 'DOMContentLoaded'
         });
     }
 

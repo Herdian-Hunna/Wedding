@@ -22,6 +22,12 @@
         will-change: transform;
     }
     
+    /* Ensure home is visible on mobile */
+    .home.active {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+    }
+    
     .home::after {
         display: none;
     }
@@ -75,6 +81,16 @@
 
 .home.active {
     transform: translateY(0);
+}
+
+/* Mobile fallback - always show home when active */
+@media (max-width: 768px) {
+    .home.active {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        display: flex !important;
+        visibility: visible !important;
+    }
 }
 
 .home h2 {

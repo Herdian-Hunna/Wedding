@@ -28,6 +28,12 @@
         background-position: center;
         will-change: transform, opacity;
     }
+    
+    /* Ensure welcome is visible on mobile */
+    .welcome.active {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
 }
 
 .welcome::before {
@@ -55,6 +61,14 @@
     .welcome button {
         backdrop-filter: none;
         background: rgba(255, 255, 255, 0.95);
+    }
+    
+    /* Ensure welcome is visible when active */
+    .welcome.active {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+        display: flex !important;
+        visibility: visible !important;
     }
 }
 

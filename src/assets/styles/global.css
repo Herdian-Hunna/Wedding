@@ -75,6 +75,32 @@ body::before {
     body::before {
         display: none;
     }
+    
+    /* Ensure all sections are visible on mobile */
+    section {
+        display: block !important;
+        visibility: visible !important;
+    }
+    
+    /* Remove AOS dependency - show elements immediately on mobile */
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
+    }
+    
+    /* Ensure all divs are visible */
+    div[data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    /* Ensure all lists are visible */
+    ul[aria-label] {
+        display: flex !important;
+        visibility: visible !important;
+    }
 }
 
 body.active {
