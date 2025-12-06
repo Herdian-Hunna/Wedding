@@ -24,8 +24,12 @@ export const welcome = () => {
         const params = getQueryParameter('to');
 
         if (params) {
-            weddingToElement.innerHTML = `Kepada Yth Bapak/Ibu/Saudara/i<br><span>${params}</span>`;
-            name.value = params;
+            // Decode URL parameter (handle spaces, special characters)
+            const decodedName = decodeURIComponent(params);
+            weddingToElement.innerHTML = `Kepada Yth Bapak/Ibu/Saudara/i<br><span>${decodedName}</span>`;
+            if (name) {
+                name.value = decodedName;
+            }
         } else {
             weddingToElement.innerHTML = `Kepada Yth Bapak/Ibu/Saudara/i<br><span></span>`;
         }

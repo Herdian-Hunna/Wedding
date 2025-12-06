@@ -134,5 +134,11 @@ export const data = {
             icon: 'bx bxs-message-rounded-dots',
             path: '#wishas',
         },
+        {
+            id: 6,
+            teks: 'Link',
+            icon: 'bx bx-link',
+            path: '#links',
+        },
     ],
 }
