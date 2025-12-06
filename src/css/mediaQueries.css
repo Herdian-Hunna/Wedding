@@ -10,6 +10,41 @@
         padding: 0.4rem 0.8rem;
     }
 
+    .home {
+        padding: 3rem 1.4rem;
+    }
+
+    .home h2 {
+        font-size: 2.2rem;
+    }
+
+    .home figure img {
+        width: 9rem;
+        height: 9rem;
+    }
+
+    .home figure figcaption {
+        font-size: 1.8rem;
+    }
+
+    .home .home-time {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .home .home-time div {
+        min-width: 4rem;
+        height: 4rem;
+    }
+
+    .home .home-time div p {
+        font-size: 1.1rem;
+    }
+
+    .home .home-time div p span {
+        font-size: 0.6rem;
+    }
+
     .home svg {
         bottom: -5rem;
     }
@@ -24,6 +59,28 @@
         width: 2.5rem;
         height: 2.5rem;
         font-size: 1.1rem;
+    }
+
+    .welcome {
+        padding: 2rem 1rem;
+    }
+
+    .welcome h2 {
+        font-size: 1.8rem;
+    }
+
+    .welcome figure img {
+        width: 9rem;
+        height: 9rem;
+    }
+
+    .welcome figure figcaption {
+        font-size: 1.6rem;
+    }
+
+    .welcome button {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.95rem;
     }
 
     .bride, .time{

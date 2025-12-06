@@ -14,19 +14,7 @@
     overflow: hidden;
 }
 
-/* Optimize background and disable heavy effects on mobile */
 @media (max-width: 768px) {
-    .home {
-        background-size: cover;
-        background-position: center;
-        will-change: transform;
-        padding: 2rem 1rem;
-        min-height: 100vh;
-        min-height: 100dvh;
-        gap: 1rem;
-    }
-    
-    /* Ensure home is visible on mobile */
     .home.active {
         transform: translateY(0) !important;
         opacity: 1 !important;
@@ -37,78 +25,7 @@
     }
     
     .home figure::before {
-        backdrop-filter: none !important;
-        animation: none;
         display: none;
-    }
-    
-    .home h2 {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .home figure {
-        margin: 0.5rem 0;
-    }
-    
-    .home figure img {
-        width: 9rem;
-        height: 9rem;
-        border: 3px solid rgba(212, 175, 55, 0.5);
-    }
-    
-    .home figure figcaption {
-        font-size: 1.8rem;
-        margin-top: 0.3rem;
-    }
-    
-    .home h3 {
-        font-size: 0.9rem;
-        margin: 0.3rem 0;
-    }
-    
-    .home .home-time {
-        margin-top: 1.5rem;
-        gap: 0.8rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .home .home-time div {
-        min-width: 4.5rem;
-        height: 4.5rem;
-        padding: 0.5rem;
-        border-radius: 15px;
-        backdrop-filter: none !important;
-        background: rgba(255, 255, 255, 0.95) !important;
-    }
-    
-    .home .home-time div p {
-        font-size: 1.1rem;
-    }
-    
-    .home .home-time div p span {
-        font-size: 0.6rem;
-    }
-    
-    .home a {
-        padding: 0.85rem 2rem;
-        font-size: 0.9rem;
-        margin: 1rem auto;
-        width: 85%;
-        max-width: 250px;
-    }
-    
-    .home .share-buttons {
-        margin: 1rem auto;
-        gap: 0.8rem;
-    }
-    
-    .home .share-buttons .share-btn {
-        width: 2.5rem;
-        height: 2.5rem;
-        backdrop-filter: none !important;
-        background: rgba(255, 255, 255, 0.95) !important;
     }
 }
 
