@@ -15,7 +15,8 @@ export const wishas = () => {
     const [peopleComentar, ___, containerComentar] = wishasContainer.children[2].children;
     const buttonForm = form.children[6];
     const pageNumber = wishasContainer.querySelector('.page-number');
-    const [prevButton, nextButton] = wishasContainer.querySelectorAll('.button-grup button');
+    const prevButton = wishasContainer.querySelector('#prevBtn');
+    const nextButton = wishasContainer.querySelector('#nextBtn');
 
 
     const listItemComentar = (data) => {

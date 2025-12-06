@@ -10,11 +10,11 @@ export const bride = () => {
                    <figcaption>${data.name}</figcaption>
               </figure>
               <p>${data.child} <br>dari <br> Bapak ${data.father} & Ibu ${data.mother}</p>
-              <span style="display: ${data.id === 2 ? 'none' : 'block'}">&</span>
+              <span style="display: ${data.id === 1 ? 'none' : 'block'}">&</span>
         </li>`
     )
 
-    const brideData = [data.bride.L, data.bride.P];
+    const brideData = [data.bride.P, data.bride.L];
 
     renderElement(brideData, brideCouple, brideListItem);
 }

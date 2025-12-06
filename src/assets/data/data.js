@@ -1,20 +1,20 @@
 export const data = {
     bride: {
+        P: {
+            id: 1|2,
+            name: 'Huna Khoerotun Hisan. S.Pd.,Gr',
+            child: 'Putri ke 2',
+            father: 'H.Edi Sopyan',
+            mother: 'Nani Kurniani (Bu. Nday)',
+            image: './src/assets/images/cewe.jpeg'
+        },
         L: {
-            id: 1,
-            name: 'Herdian Maulana ',
+            id: 2|1, 
+            name: 'Herdian Maulana. S.Tr.T',
             child: 'Putra ke 1',
             father: 'Tatang Setiawan',
             mother: 'Ayi Rosanah',
             image: './src/assets/images/cowo.jpeg'
-        },
-        P: {
-            id: 2,
-            name: 'Huna Khoerotun Hisan',
-            child: 'Putri ke 2',
-            father: 'H.Edi Sopyan',
-            mother: 'Nani Kurniani',
-            image: './src/assets/images/cewe.jpeg'
         },
 
         couple: './src/assets/images/Couple.jpeg'
@@ -84,21 +84,6 @@ export const data = {
         }
     ],
 
-    bank: [
-        {
-            id: 1,
-            name: 'Herdian Maulana',
-            icon: './src/assets/images/bca.png',
-            rekening: '1393986852'
-        },
-        {
-            id: 2,
-            name: 'Huna Khoerotun Hisan',
-            icon: './src/assets/images/bri.png',
-            rekening: '411601052934539'
-        },
-    ],
-
     audio: './src/assets/audio/wedding.mp3',
 
     api: 'https://script.google.com/macros/s/AKfycbySJcZFZ6s0XeQwdho-muu2B-XDvwdHvuUr-x8tU528mppyo6nlDtbjLDp1RAwrz9Um/exec',
@@ -133,12 +118,6 @@ export const data = {
             teks: 'Ucapan',
             icon: 'bx bxs-message-rounded-dots',
             path: '#wishas',
-        },
-        {
-            id: 6,
-            teks: 'Link',
-            icon: 'bx bx-link',
-            path: '#links',
         },
     ],
 }

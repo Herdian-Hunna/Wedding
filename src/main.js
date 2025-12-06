@@ -7,7 +7,6 @@ import {navbar} from "./js/navbar.js";
 import {welcome} from "./js/welcome.js";
 import {shareButtons} from "./js/share.js";
 import {initConfetti} from "./js/confetti.js";
-import {linksSection} from "./js/links.js";
 
 // load content
 document.addEventListener('DOMContentLoaded', () => {
@@ -26,5 +25,4 @@ document.addEventListener('DOMContentLoaded', () => {
     wishas();
     shareButtons();
     initConfetti();
-    linksSection();
 });
